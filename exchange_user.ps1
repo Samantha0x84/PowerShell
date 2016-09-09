@@ -2,6 +2,8 @@ $connectExchange = "http://server.domain.co.uk/powershell"
 $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri $connectExchange -Authentication Kerberos
 Import-PSSession $Session -ErrorAction silentlycontinue -Verbose
 
+$continue = "y"
+
 while ($continue -eq "y") {
 #Make new mailbox
 $identity = read-host "enter username: "
