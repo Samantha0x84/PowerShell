@@ -1,5 +1,5 @@
 #This was made to be used by another technician who doesn't know powershell.
-
+#He was asked to bulk upload some 1000+ files to SharePoint but some of the characters were invalid and had to be replaced.
 
 Add-Type -AssemblyName Microsoft.VisualBasic
 
