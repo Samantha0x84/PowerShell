@@ -2,6 +2,8 @@
 # The purpose for this is that, on very rare occasions, users won't get their home directory applied for any number of reasons. 
 # E.g. the file server isn't available 
 # This script loads up a list of all the server desktops we run from a csv, then checks the local user area which Windows reverts to by default. 
+# This means if someone comes to us regarding their work being 'missing', we can retrieve it without sorting through the 230 servers.
+
 
 $username = Read-Host "enter the username: "
 cd $PSScriptRoot
