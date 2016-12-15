@@ -1,12 +1,19 @@
-#Import modules from the exchange server
-$connectExchange = "http://server.domain.co.uk/powershell"
+if ($session.ComputerName -ne "exchangeserver.mydomain.co.uk")
+{
+Write-Host "Importing PSSession from exchangeserver.mydomain.co.uk"
+$connectExchange = "http://exchangeserver.mydomain.co.uk/powershell"
 $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri $connectExchange -Authentication Kerberos
 Import-PSSession $Session -ErrorAction silentlycontinue -Verbose
+}
+else
+{
+Write-Host "PSSession from exchangeserver.mydomain.co.uk already imported \n"
+}
 
+Write-Host "Avaliable mailbox databases: "
+Get-MailboxDatabase | Select-Object Name
 
-#Get a list of MailBox databases
-Get-MailboxDatabase
+$username = Read-Host "Enter the username: "
+$mailboxdatabase = "Enter the name of the mailbox: "
 
-#Make the mailbox
-Enable-Mailbox -Identity [foobar] -Database [foobar]
-
+Enable-Mailbox -Identity $username -Database $mailboxdatabase
