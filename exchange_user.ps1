@@ -1,7 +1,7 @@
 if ($session.ComputerName -ne "pexc01.prioryacademies.co.uk")
 {
 Write-Host "Importing PSSession from pexc01"
-$connectExchange = "http://pexc01.prioryacademies.co.uk/powershell"
+$connectExchange = "http://exc01.mydomain.co.uk/powershell"
 $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri $connectExchange -Authentication Kerberos
 Import-PSSession $Session -ErrorAction silentlycontinue -Verbose
 }
