@@ -17,25 +17,25 @@ $homedir1 ="\\mydomain.co.uk\"
 $homedir2 ="\students\"
 
 #find and make the OU path + make homedir path + description
-if ($academySelect = "w")
+if ($academySelect -eq "w")
 {
 $pathStart = "OU=FooBar Delta Academy,OU=Students,OU=Users,OU=Federation Objects,DC=mydomain,DC=co,DC=uk"
 $homedir = $homedir1+"Delta"+$homedir2+$yearGroup+"\"+$name
 $description = "Student - The FooBar Delta Academy"
 }
-elseif ($academySelect = "l")
+elseif ($academySelect -eq "l")
 {
 $pathStart = "OU=FooBar Gamma Academy,OU=Students,OU=Users,OU=Federation Objects,DC=mydomain,DC=co,DC=uk"
 $homedir = $homedir1+"Lincoln"+$homedir2+$yearGroup+"\"+$name
 $description = "Student - The FooBar City of LincolnAcademy"
 }
-elseif ($academySelect = "r")
+elseif ($academySelect -eq "r")
 {
 $pathStart = "OU=FooBar Alpha Academy,OU=Students,OU=Users,OU=Federation Objects,DC=mydomain,DC=co,DC=uk"
 $homedir = $homedir1+"Alpha"+$homedir2+$yearGroup+"\"+$name
 $description = "Student - The FooBar Alpha Academy"
 }
-elseif ($academySelect = "p")
+elseif ($academySelect -eq "p")
 {
 $pathStart = "OU=FooBar Academy Beta,OU=Students,OU=Users,OU=Federation Objects,DC=mydomain,DC=co,DC=uk"
 $homedir = $homedir1+"FooBar"+$homedir2+$yearGroup+"\"+$name
@@ -49,7 +49,7 @@ $groupTemplate = get-aduser -filter * -searchbase $path  –Properties MemberOf 
 
 
 #Password generation
-if ($randomPassword = "y") {
+if ($randomPassword -eq "y") {
     $wordList1 = import-csv .\wordlist.csv | Select-Object Words -ExpandProperty Words | get-random
     $wordList2 = import-csv .\wordlist.csv | Select-Object Words -ExpandProperty Words | get-random
     $number1 = Get-Random -minimum 0 -maximum 9
@@ -93,7 +93,7 @@ $lc++
 
 #Make exchange mailbox
 $makeMailBox = Read-Host "Make a mailBox for this user? y/n" 
-if ($makeMailBox = "y"){
+if ($makeMailBox -eq "y"){
 
     if ($session.ComputerName -ne "exc01.mydomain.co.uk")
         {
