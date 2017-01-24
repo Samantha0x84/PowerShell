@@ -11,7 +11,7 @@ $examAccount  = $normalAccount | select samaccountname -ExpandProperty samaccoun
 $givenname    = get-aduser $examAccount  | select givenname -ExpandProperty givenname
 $surname      = get-aduser $examAccount  | select surname -ExpandProperty surname
 $examAccount  = "CA"+$examAccount
-$userToUpdate = get-aduser -filter {name -like $examAccount} | select samaccountname -ExpandProperty samaccountname
+$userToUpdate = get-aduser $examAccount | select samaccountname -ExpandProperty samaccountname
 
 Set-ADUser -Identity $userToUpdate -Surname $surname -GivenName $givenname
 
