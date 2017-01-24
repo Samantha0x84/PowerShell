@@ -7,13 +7,12 @@ $normalAccount = get-aduser -searchbase "OU=212,OU=Some Academy,OU=Students,OU=U
 
 foreach ($normalAccount in $normalAccount)
 {
+$givenname    = get-aduser $normalAccount  | select givenname -ExpandProperty givenname
+$surname      = get-aduser $normalAccount  | select surname -ExpandProperty surname
 $examAccount  = $normalAccount | select samaccountname -ExpandProperty samaccountname
-$givenname    = get-aduser $examAccount  | select givenname -ExpandProperty givenname
-$surname      = get-aduser $examAccount  | select surname -ExpandProperty surname
 $examAccount  = "CA"+$examAccount
-$userToUpdate = get-aduser $examAccount | select samaccountname -ExpandProperty samaccountname
 
-Set-ADUser -Identity $userToUpdate -Surname $surname -GivenName $givenname
+Set-ADUser -Identity $examAccount -Surname $surname -GivenName $givenname
 
 write-host -BackgroundColor DarkRed -ForegroundColor White "`n" $userToUpdate "`n" $surname "`n"  $givenname "`n"
 write-host "-------------------------- `n"
