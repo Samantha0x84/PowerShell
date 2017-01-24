@@ -1,5 +1,5 @@
 #We have "controlled assessment" accounts for students. However whoever set up these accounts didn't include any first names or surnames.
-#Luckly the controlled assment accounts are name the same as their usual accounts, just with a prefix of "CA"
+#Luckly the controlled assment accounts are named the same as their usual accounts, just with a prefix of "CA"
 #This script references their normal account and pulls off their names.
 
 
